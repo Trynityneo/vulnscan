@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cybersecurity Dark Theme */
+    --background: 222 84% 4.9%; /* #0f172a */
+    --foreground: 210 40% 98%; /* #f8fafc */
+    --card: 222 47% 11%; /* #1e293b */
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 195 100% 50%; /* #00d4ff */
+    --primary-foreground: 222 84% 4.9%;
+    --secondary: 217 32% 17%; /* #374151 */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 217 9% 45%; /* #64748b */
+    --accent: 195 100% 50%;
+    --accent-foreground: 222 84% 4.9%;
+    --destructive: 0 84% 60%; /* #ef4444 */
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 195 100% 50%;
+    --chart-1: 195 100% 50%; /* cyber blue */
+    --chart-2: 142 76% 36%; /* cyber green */
+    --chart-3: 43 96% 56%; /* cyber amber */
+    --chart-4: 0 84% 60%; /* cyber red */
+    --chart-5: 262 83% 58%; /* cyber purple */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-cyber-bg text-cyber-text;
+    background-image: var(--tw-gradient-cyber-grid);
+    background-attachment: fixed;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-blue/50 rounded;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber-blue/70;
+  }
+}
+
+@layer components {
+  .cyber-card {
+    @apply bg-cyber-surface border border-cyber-blue/20 rounded-lg p-6;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+  }
+  
+  .cyber-button {
+    @apply bg-cyber-blue text-cyber-bg px-4 py-2 rounded-md font-medium;
+    @apply hover:bg-cyber-blue/90 transition-all duration-200;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  }
+  
+  .cyber-input {
+    @apply bg-cyber-surface border border-cyber-blue/30 rounded-md px-3 py-2;
+    @apply text-cyber-text placeholder-cyber-muted focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue;
+  }
+  
+  .scan-animation {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scan-animation::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+    animation: scan-line 2s linear infinite;
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  
+  .status-safe {
+    @apply text-cyber-green;
+    text-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+  }
+  
+  .status-warning {
+    @apply text-cyber-amber;
+    text-shadow: 0 0 5px rgba(245, 158, 11, 0.5);
+  }
+  
+  .status-danger {
+    @apply text-cyber-red;
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+  }
+}
+
+/* Hide Next.js badge and error messages */
+body > nextjs-portal {
+  display: none;
+}
